@@ -5,81 +5,126 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CreatorKit AI – Free Hook, Script, Title and Description Helpers for Short Videos</title>
 <meta name="description" content="Free, in-browser helpers for short-form video creators: generate hooks, Shorts scripts, titles and descriptions from simple templates. No sign-up, no data sent anywhere.">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#080a14">
 <style>
-:root{--bg:#fff;--surface:#faf9fc;--border:#e6e3ee;--text:#1c1b22;--muted:#5f5c6d;--accent:#6d5bd0;--accent-d:#5846b8;--soft:#f1eefc;--r:14px}
+:root{color-scheme:dark;--bg:#080a14;--bg2:#0d1122;--surface:#111630;--surface2:#171d3d;--border:#262d52;--border2:#3a4378;--text:#eef0fb;--muted:#a6acca;--accent:#a99cff;--accent2:#67e8f9;--pri1:#6d5bd0;--pri2:#4a63e0;--r:16px}
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:76px}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","Noto Sans Devanagari",sans-serif;overflow-wrap:break-word}
 [hidden]{display:none!important}
-a{color:var(--accent-d)}
-:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
-.wrap{width:100%;max-width:1040px;margin:0 auto;padding:0 18px}
-.skip{position:absolute;left:-999px;top:8px;background:#fff;padding:8px 12px;border:1px solid var(--border);border-radius:8px;z-index:20}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent2);outline-offset:2px;border-radius:6px}
+.wrap{width:100%;max-width:1080px;margin:0 auto;padding:0 18px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--surface2);color:var(--text);padding:8px 12px;border:1px solid var(--border);border-radius:8px;z-index:50}
 .skip:focus{left:8px}
-header{position:sticky;top:0;background:rgba(255,255,255,.96);border-bottom:1px solid var(--border);z-index:10}
-.bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:4px 16px;padding:10px 0}
-.brand{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--text);text-decoration:none;letter-spacing:-.01em}
-nav ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:2px}
-nav a{display:block;padding:6px 10px;color:var(--muted);text-decoration:none;font-size:15px;border-radius:8px}
-nav a:hover{background:var(--soft);color:var(--text)}
-.hero{padding:48px 0 36px;text-align:center}
-.pill{display:inline-block;background:var(--soft);color:var(--accent-d);font-size:13px;font-weight:600;padding:4px 12px;border-radius:99px}
-h1{font-size:clamp(1.9rem,6.5vw,3.1rem);line-height:1.15;letter-spacing:-.025em;margin:16px auto 14px;max-width:18ch}
-.lead{color:var(--muted);max-width:56ch;margin:0 auto 24px;font-size:1.05rem}
+
+header{position:sticky;top:0;z-index:40;background:rgba(8,10,20,.94);border-bottom:1px solid var(--border)}
+@supports (backdrop-filter:blur(8px)){header{background:rgba(8,10,20,.8);backdrop-filter:blur(12px)}}
+.bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;padding:10px 18px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--text);text-decoration:none;letter-spacing:-.01em;min-height:44px}
+.menu{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:6px 14px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font:inherit;font-size:15px;font-weight:600;cursor:pointer}
+.menu:hover{background:var(--surface2);border-color:var(--border2)}
+#nav{display:none;width:100%;padding:8px 0 6px}
+#nav.open{display:block}
+#nav ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+#nav a{display:block;padding:12px;color:var(--muted);text-decoration:none;border-radius:10px;font-weight:500}
+#nav a:hover{background:var(--surface2);color:var(--text)}
+
+.hero{text-align:center;padding:56px 0 48px;background:radial-gradient(60% 60% at 50% 0%,rgba(109,91,208,.32),transparent 72%),radial-gradient(34% 40% at 92% 18%,rgba(56,189,248,.12),transparent 70%)}
+.pill{display:inline-block;border:1px solid rgba(169,156,255,.35);background:rgba(169,156,255,.1);color:#d4cfff;font-size:14px;font-weight:500;padding:4px 14px;border-radius:99px}
+h1{font-size:clamp(2.05rem,8.4vw,3.6rem);line-height:1.1;letter-spacing:-.03em;margin:20px auto 16px;max-width:19ch}
+.lead{color:var(--muted);max-width:58ch;margin:0 auto 28px;font-size:1.05rem}
 .cta{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
-section{padding:36px 0}
-h2{font-size:clamp(1.4rem,4.5vw,1.9rem);letter-spacing:-.02em;margin:0 0 8px;line-height:1.25}
-.sub{color:var(--muted);margin:0 0 22px;max-width:62ch}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;font:inherit;font-weight:600;font-size:15px;min-height:44px;padding:8px 18px;border-radius:10px;border:1px solid var(--border);background:#fff;color:var(--text);cursor:pointer;text-decoration:none}
-.btn:hover{background:var(--soft)}
-.btn.pri{background:var(--accent);border-color:var(--accent);color:#fff}
-.btn.pri:hover{background:var(--accent-d)}
-.btn.sm{min-height:36px;padding:4px 12px;font-size:14px}
-.tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.cta .btn{flex:1 1 190px;max-width:260px}
+section{padding:40px 0}
+h2{font-size:clamp(1.5rem,5vw,2rem);letter-spacing:-.02em;margin:0 0 8px;line-height:1.25}
+.sub{color:var(--muted);margin:0 0 24px;max-width:64ch}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-weight:600;font-size:15px;min-height:44px;padding:8px 20px;border-radius:12px;border:1px solid var(--border);background:var(--surface2);color:var(--text);cursor:pointer;text-decoration:none}
+.btn:hover{background:#202750;border-color:var(--border2)}
+.btn.pri{background:linear-gradient(135deg,var(--pri1),var(--pri2));border-color:transparent;color:#fff}
+.btn.pri:hover{background:linear-gradient(135deg,var(--pri1),var(--pri2));border-color:transparent;box-shadow:0 6px 24px rgba(109,91,208,.45)}
+.btn.sm{min-height:40px;padding:4px 14px;font-size:14px;border-radius:10px}
+@media (prefers-reduced-motion:no-preference){.btn,.card,.tab,.menu{transition:background .15s,border-color .15s,box-shadow .15s}}
+
+.cards{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
+.card{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:20px;border:1px solid var(--border);border-radius:var(--r);background:linear-gradient(180deg,var(--surface2),var(--surface))}
+.card:hover,.card:focus-within{border-color:rgba(169,156,255,.55)}
+.card h3{margin:6px 0 0;font-size:1.05rem}
+.card p{margin:0 0 8px;color:var(--muted);font-size:15px;flex:1}
+.card .btn{width:100%}
+.ico{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;color:var(--accent);background:rgba(169,156,255,.1);border:1px solid rgba(169,156,255,.28)}
+.ico svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:32px 0 14px}
 .tab{font:inherit;font-weight:600;font-size:14.5px;min-height:46px;padding:8px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:var(--muted);cursor:pointer}
-.tab[aria-selected=true]{background:var(--soft);border-color:var(--accent);color:var(--accent-d)}
-.panel{border:1px solid var(--border);border-radius:var(--r);background:#fff;padding:18px}
-.panel h3{margin:0 0 4px;font-size:1.15rem}
-.panel>p{margin:0 0 16px;color:var(--muted);font-size:15px}
+.tab:hover{color:var(--text);border-color:var(--border2)}
+.tab[aria-selected=true]{background:rgba(139,124,246,.16);border-color:#8b7cf6;color:#e4e0ff}
+.panel{border:1px solid var(--border);border-radius:20px;background:linear-gradient(180deg,var(--surface),var(--bg2));padding:20px}
+.panel h3{margin:0 0 4px;font-size:1.2rem}
+.panel>p{margin:0 0 18px;color:var(--muted);font-size:15px}
 .grid{display:grid;gap:14px;grid-template-columns:1fr}
-.field{display:flex;flex-direction:column;gap:5px;min-width:0}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
 label{font-weight:600;font-size:14.5px}
 .opt{font-weight:400;color:var(--muted)}
-input[type=text],select{font:inherit;width:100%;min-height:46px;padding:9px 12px;border:1px solid #cfcbdb;border-radius:10px;background:#fff;color:var(--text)}
-input[type=text]:focus-visible,select:focus-visible{outline-offset:1px;border-color:var(--accent)}
-input[aria-invalid=true]{border-color:#b3261e}
-.err{color:#b3261e;font-size:14px;margin:0;min-height:0}
+input[type=text],select{font:inherit;width:100%;min-height:46px;padding:9px 12px;border:1px solid #2f3660;border-radius:10px;background:#0a0d1c;color:var(--text)}
+input::placeholder{color:#7f86a8;opacity:1}
+input[type=text]:focus-visible,select:focus-visible{outline-offset:1px;border-color:var(--accent2)}
+input[aria-invalid=true]{border-color:#ff9b93}
+.err{color:#ff9b93;font-size:14px;margin:0}
 .err:empty{display:none}
-.chk{display:flex;align-items:center;gap:8px;font-weight:400;font-size:15px}
-.chk input{width:20px;height:20px;accent-color:var(--accent)}
-.row{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
-.outhead{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;margin:22px 0 10px;padding-top:18px;border-top:1px solid var(--border)}
+.chk{display:flex;align-items:center;gap:10px;font-weight:400;font-size:15px;min-height:44px}
+.chk input{width:20px;height:20px;flex:none;accent-color:#8b7cf6}
+.row{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.outhead{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;margin:24px 0 12px;padding-top:18px;border-top:1px solid var(--border)}
 .outhead h4{margin:0;font-size:1rem}
-.empty{color:var(--muted);background:var(--surface);border:1px dashed var(--border);border-radius:12px;padding:16px;margin:0;font-size:15px}
+.empty{color:var(--muted);background:rgba(255,255,255,.02);border:1px dashed var(--border2);border-radius:12px;padding:16px;margin:0;font-size:15px}
 .items{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-.items li{display:flex;flex-direction:column;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 14px}
-.items p{margin:0;white-space:pre-line}
-.lbl{display:block;font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent-d);margin-bottom:2px}
-.meta{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+.items li{display:flex;flex-direction:column;gap:10px;background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:14px}
+.items .body{flex:1;min-width:0}
+.items p{margin:0;white-space:pre-line;overflow-wrap:anywhere}
+.lbl{display:block;font-size:13.5px;color:var(--accent);margin-bottom:4px}
+.meta{display:block;font-size:13px;color:var(--muted);margin-top:4px}
 .items .btn{align-self:flex-start}
-.cards{display:grid;gap:12px;grid-template-columns:1fr}
-.card{border:1px solid var(--border);border-radius:var(--r);padding:16px;background:#fff;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
-.card h3{margin:0;font-size:1.02rem}
-.card p{margin:0;color:var(--muted);font-size:15px}
-.note{background:var(--soft);border-radius:var(--r);padding:16px 18px;font-size:15px}
-.note p{margin:0 0 10px}
-details{border:1px solid var(--border);border-radius:12px;padding:0 16px;margin-bottom:10px;background:#fff}
-summary{cursor:pointer;font-weight:600;padding:14px 0;min-height:44px}
+.note{border:1px solid var(--border);border-radius:var(--r);padding:18px;background:linear-gradient(135deg,rgba(109,91,208,.16),rgba(56,189,248,.06))}
+.note p{margin:0 0 8px}
+
+details{border:1px solid var(--border);border-radius:12px;padding:0 16px;margin-bottom:10px;background:var(--surface)}
+details[open]{border-color:var(--border2)}
+summary{display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;font-weight:600;padding:12px 0;min-height:48px;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--accent);font-size:1.4rem;line-height:1;flex:none}
+details[open] summary::after{content:"\2212"}
 details p{margin:0 0 14px;color:var(--muted)}
-footer{border-top:1px solid var(--border);margin-top:20px;padding:24px 0 32px;color:var(--muted);font-size:14.5px}
-footer p{margin:0 0 6px}
-.status{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#1c1b22;color:#fff;padding:10px 16px;border-radius:10px;font-size:14.5px;max-width:calc(100% - 32px);z-index:30;opacity:0;pointer-events:none}
+
+footer{border-top:1px solid var(--border);margin-top:24px;padding:32px 0 calc(32px + env(safe-area-inset-bottom,0px));background:var(--bg2);color:var(--muted);font-size:14.5px}
+.fgrid{display:grid;gap:20px;grid-template-columns:1fr}
+.fbrand{color:var(--text);font-size:1.05rem}
+footer p{margin:6px 0 0;max-width:52ch}
+.fnav ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:0 10px}
+.fnav a{display:inline-block;padding:10px 4px;color:var(--muted);text-decoration:none}
+.fnav a:hover{color:var(--text);text-decoration:underline}
+footer .fine{margin:22px 0 0;padding-top:16px;border-top:1px solid var(--border);font-size:13.5px;max-width:none}
+
+.status{position:fixed;left:16px;right:16px;bottom:calc(18px + env(safe-area-inset-bottom,0px));margin:0 auto;width:max-content;max-width:calc(100% - 32px);background:#e9e7ff;color:#11142a;padding:10px 16px;border-radius:10px;font-size:14.5px;font-weight:500;z-index:60;opacity:0;pointer-events:none}
 .status.on{opacity:1}
 @media (prefers-reduced-motion:no-preference){.status{transition:opacity .2s}}
-@media (min-width:640px){.tabs{grid-template-columns:repeat(4,1fr)}.grid.two{grid-template-columns:1fr 1fr}.cards{grid-template-columns:1fr 1fr}.panel{padding:24px}.items li{flex-direction:row;align-items:flex-start;justify-content:space-between}.items .body{flex:1;min-width:0}.hero{padding:72px 0 52px}}
-@media (min-width:900px){.cards{grid-template-columns:repeat(4,1fr)}}
+
+@media (min-width:640px){
+.tabs{grid-template-columns:repeat(4,1fr)}
+.grid.two{grid-template-columns:1fr 1fr}
+.panel{padding:28px}
+.items li{flex-direction:row;align-items:flex-start;justify-content:space-between}
+.hero{padding:88px 0 68px}
+.fgrid{grid-template-columns:1.4fr 1fr}
+}
+@media (min-width:760px){
+.menu{display:none}
+#nav{display:block;width:auto;padding:0}
+#nav ul{flex-direction:row;gap:4px}
+#nav a{padding:8px 14px;font-size:15px}
+}
 </style>
 </head>
 <body>
@@ -87,26 +132,38 @@ footer p{margin:0 0 6px}
 <header>
 <div class="wrap bar">
 <a class="brand" href="#top" aria-label="CreatorKit AI home">
-<svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="8" fill="#6d5bd0"/><path d="M14 6l2 5.5 5.5 2-5.5 2L14 21l-2-5.5L6.500 13.500l5.500-2z" fill="#fff"/></svg>
+<svg width="30" height="30" viewBox="0 0 28 28" aria-hidden="true" focusable="false"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7c6af0"/><stop offset="1" stop-color="#38bdf8"/></linearGradient></defs><rect width="28" height="28" rx="8" fill="url(#lg)"/><path d="M14 6l2 5.5 5.5 2-5.5 2L14 21l-2-5.5L6.5 13.5l5.5-2z" fill="#fff"/></svg>
 CreatorKit AI</a>
-<nav aria-label="Main"><ul>
+<button class="menu" id="menu-btn" type="button" aria-expanded="false" aria-controls="nav"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Menu</span></button>
+<nav id="nav" aria-label="Main"><ul>
 <li><a href="#tools">Tools</a></li><li><a href="#examples">Examples</a></li><li><a href="#faq">FAQ</a></li><li><a href="#about">About</a></li>
 </ul></nav>
 </div>
 </header>
 
 <main id="top">
-<div class="wrap">
 <section class="hero" aria-labelledby="h-hero">
-<span class="pill">Free · No sign-up · Runs in your browser</span>
-<h1 id="h-hero">Prepare short videos faster</h1>
-<p class="lead">Four simple helpers for YouTube Shorts, Reels and TikTok creators: hooks, scripts, titles and descriptions. They use fixed templates and rules, so you get starting points to edit in your own voice.</p>
-<div class="cta"><a class="btn pri" href="#tools">Open the tools</a><a class="btn" href="#examples">See examples</a></div>
+<div class="wrap">
+<span class="pill">Free to use, with no sign-up</span>
+<h1 id="h-hero">Prepare your next short video faster</h1>
+<p class="lead">Four simple helpers for YouTube Shorts, Reels and TikTok creators: hooks, scripts, titles and descriptions. They run on fixed templates and rules, not a live AI model, so you get starting points to edit in your own voice.</p>
+<div class="cta"><a class="btn pri" href="#tools">Explore the tools</a><a class="btn" href="#examples">See examples</a></div>
+</div>
 </section>
 
+<div class="wrap">
 <section id="tools" aria-labelledby="h-tools">
-<h2 id="h-tools">Tool workspace</h2>
+<h2 id="h-tools">Choose a tool</h2>
 <p class="sub">Pick a tool, fill in your topic and press Generate. Results appear instantly and are always the same for the same inputs.</p>
+
+<div class="cards">
+<div class="card"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><h3>Hook Generator</h3><p>Opening lines for the first seconds of your video, shaped by niche and tone.</p><button class="btn" type="button" data-open="hooks">Open Hook Generator</button></div>
+<div class="card"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg></span><h3>Script Maker</h3><p>A timed outline with a hook, main content and call to action in English, Hindi or Hinglish.</p><button class="btn" type="button" data-open="script">Open Script Maker</button></div>
+<div class="card"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 6V4h14v2M12 4v16M9 20h6"/></svg></span><h3>Title Generator</h3><p>Eight title ideas to edit and test, each with a character count.</p><button class="btn" type="button" data-open="titles">Open Title Generator</button></div>
+<div class="card"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 6h16M4 10h10M4 14h16M4 18h10"/></svg></span><h3>Description Maker</h3><p>A short description with optional hashtag suggestions for your platform.</p><button class="btn" type="button" data-open="desc">Open Description Maker</button></div>
+</div>
+
+<div id="workspace">
 <div class="tabs" role="tablist" aria-label="Tools">
 <button class="tab" role="tab" id="tab-hooks" aria-controls="p-hooks" aria-selected="true">Hook Generator</button>
 <button class="tab" role="tab" id="tab-script" aria-controls="p-script" aria-selected="false" tabindex="-1">Script Maker</button>
@@ -178,6 +235,7 @@ CreatorKit AI</a>
 <div class="outhead"><h4>Description</h4><button class="btn sm" type="button" id="ca-desc" hidden>Copy all</button></div>
 <div id="o-desc" aria-live="polite"><p class="empty">Your description will appear here.</p></div>
 </div>
+</div>
 </section>
 
 <section id="examples" aria-labelledby="h-ex">
@@ -217,8 +275,11 @@ CreatorKit AI</a>
 
 <footer>
 <div class="wrap">
-<p><strong>CreatorKit AI</strong> – free template-based helpers for short-form creators.</p>
-<p>Runs locally in your browser. Inputs are not sent to a server. Outputs are template-based suggestions, not guarantees of results.</p>
+<div class="fgrid">
+<div><strong class="fbrand">CreatorKit AI</strong><p>Free, template-based helpers for short-form creators.</p></div>
+<nav class="fnav" aria-label="Footer"><ul><li><a href="#tools">Tools</a></li><li><a href="#examples">Examples</a></li><li><a href="#privacy">Privacy</a></li><li><a href="#faq">FAQ</a></li><li><a href="#about">About</a></li></ul></nav>
+</div>
+<p class="fine">Runs locally in your browser. Inputs are not sent to a server. Outputs are template-based suggestions, not guarantees of results.</p>
 </div>
 </footer>
 <div id="status" class="status" role="status" aria-live="polite"></div>
@@ -262,7 +323,7 @@ var PTAG = { yt: ['#Shorts', '#YouTubeShorts'], ig: ['#Reels', '#InstagramReels'
 var STOP = ['the', 'and', 'for', 'with', 'how', 'what', 'why', 'your', 'you', 'from', 'that', 'this', 'are', 'into', 'about', 'can', 'tips'];
 
 function tags(topic) {
-  var w = topic.toLowerCase().replace(/[^\p{L}\p{N}\s]/gu, ' ').split(/\s+/).filter(function (x) { return x.length > 2 && STOP.indexOf(x) < 0; });
+  var w = topic.toLowerCase().replace(/[^\p{L}\p{M}\p{N}\s]/gu, ' ').split(/\s+/).filter(function (x) { return x.length > 2 && STOP.indexOf(x) < 0; });
   w = uniq(w);
   var out = [];
   if (w.length > 1) { var j = w.slice(0, 3).join(''); if (j.length <= 30) out.push('#' + j); }
@@ -272,7 +333,7 @@ function tags(topic) {
 
 var BUILD = {
   hooks: function (t, f) {
-    var tone = f.tone.value, n = f.niche.selectedOptions[0].text.toLowerCase();
+    var tone = f.tone.value, n = f.niche.value === 'general' ? 'this' : f.niche.selectedOptions[0].text.toLowerCase();
     var v = { t: t, T: cap(t), who: WHO[f.niche.value], n: n };
     return rot(HOOKS[tone], hash(t.toLowerCase() + f.niche.value + tone), 6).map(function (s) { return { text: cap(fill(s, v)) }; });
   },
@@ -311,7 +372,8 @@ function say(msg) {
   clearTimeout(timer); timer = setTimeout(function () { s.classList.remove('on'); }, 2400);
 }
 function copy(text, btn) {
-  var label = btn ? btn.textContent : '';
+  if (btn && !btn.getAttribute('data-label')) btn.setAttribute('data-label', btn.textContent);
+  var label = btn ? btn.getAttribute('data-label') : '';
   function done(ok) {
     say(ok ? 'Copied to clipboard' : 'Could not copy. Please select the text and copy it manually.');
     if (ok && btn) { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = label; }, 1500); }
@@ -342,9 +404,8 @@ function render(name, items) {
   o.appendChild(ul); store[name] = items; $('ca-' + name).hidden = false;
 }
 function allText(name) {
-  return (store[name] || []).map(function (i) { return (i.label ? i.label + '\n' : '') + i.text; }).join(i0(name));
+  return (store[name] || []).map(function (i) { return (i.label ? i.label + '\n' : '') + i.text; }).join(name === 'script' || name === 'desc' ? '\n\n' : '\n');
 }
-function i0(name) { return (name === 'script' || name === 'desc') ? '\n\n' : '\n'; }
 function clearOut(name, msg) {
   var o = $('o-' + name); o.textContent = '';
   var p = document.createElement('p'); p.className = 'empty'; p.textContent = msg; o.appendChild(p);
@@ -367,7 +428,7 @@ Object.keys(BUILD).forEach(function (name) {
   f.addEventListener('submit', function (e) { e.preventDefault(); run(name); });
   $('r-' + name).addEventListener('click', function () {
     f.reset(); $('e-' + name).textContent = ''; $('t-' + name).removeAttribute('aria-invalid');
-    clearOut(name, EMPTY[name]); $('t-' + name).focus(); say('Cleared');
+    clearOut(name, EMPTY[name]); $('t-' + name).focus(); if (rem.checked) savePrefs(); say('Cleared');
   });
   $('ca-' + name).addEventListener('click', function () { copy(allText(name), $('ca-' + name)); });
   $('t-' + name).addEventListener('input', function () { $('e-' + name).textContent = ''; this.removeAttribute('aria-invalid'); });
@@ -392,6 +453,13 @@ tabs.forEach(function (t, i) {
   });
 });
 
+Array.prototype.forEach.call(document.querySelectorAll('[data-open]'), function (b) {
+  b.addEventListener('click', function () {
+    var n = b.getAttribute('data-open');
+    showTab(n); $('workspace').scrollIntoView(); $('t-' + n).focus({ preventScroll: true });
+  });
+});
+
 var EX = [
   { tool: 'hooks', topic: 'exam week study habits', set: { niche: 'education', tone: 'curious' } },
   { tool: 'script', topic: 'saving money on a student budget', set: { dur: '30', lang: 'hn', tone: 'friendly' } },
@@ -403,9 +471,15 @@ Array.prototype.forEach.call(document.querySelectorAll('[data-ex]'), function (b
     var ex = EX[+b.getAttribute('data-ex')], f = $('f-' + ex.tool);
     f.elements.topic.value = ex.topic;
     Object.keys(ex.set).forEach(function (k) { f.elements[k].value = ex.set[k]; });
-    showTab(ex.tool); run(ex.tool); $('tools').scrollIntoView();
+    showTab(ex.tool); run(ex.tool); $('workspace').scrollIntoView();
   });
 });
+
+var mb = $('menu-btn'), nav = $('nav');
+function setMenu(open) { nav.classList.toggle('open', open); mb.setAttribute('aria-expanded', open ? 'true' : 'false'); }
+mb.addEventListener('click', function () { setMenu(!nav.classList.contains('open')); });
+Array.prototype.forEach.call(nav.querySelectorAll('a'), function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && nav.classList.contains('open')) { setMenu(false); mb.focus(); } });
 
 var KEY = 'creatorkit-prefs', rem = $('remember'), sels = Array.prototype.slice.call(document.querySelectorAll('select[data-pref]'));
 function savePrefs() {
@@ -424,4 +498,4 @@ sels.forEach(function (s) { s.addEventListener('change', function () { if (rem.c
 })();
 </script>
 </body>
-  </html>
+</html>
