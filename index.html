@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CreatorKit AI – Free Hook, Script, Title and Description Helpers for Short Videos</title>
+<meta name="description" content="Free, in-browser helpers for short-form video creators: generate hooks, Shorts scripts, titles and descriptions from simple templates. No sign-up, no data sent anywhere.">
+<meta name="theme-color" content="#ffffff">
+<style>
+:root{--bg:#fff;--surface:#faf9fc;--border:#e6e3ee;--text:#1c1b22;--muted:#5f5c6d;--accent:#6d5bd0;--accent-d:#5846b8;--soft:#f1eefc;--r:14px}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","Noto Sans Devanagari",sans-serif;overflow-wrap:break-word}
+[hidden]{display:none!important}
+a{color:var(--accent-d)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+.wrap{width:100%;max-width:1040px;margin:0 auto;padding:0 18px}
+.skip{position:absolute;left:-999px;top:8px;background:#fff;padding:8px 12px;border:1px solid var(--border);border-radius:8px;z-index:20}
+.skip:focus{left:8px}
+header{position:sticky;top:0;background:rgba(255,255,255,.96);border-bottom:1px solid var(--border);z-index:10}
+.bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:4px 16px;padding:10px 0}
+.brand{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--text);text-decoration:none;letter-spacing:-.01em}
+nav ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:2px}
+nav a{display:block;padding:6px 10px;color:var(--muted);text-decoration:none;font-size:15px;border-radius:8px}
+nav a:hover{background:var(--soft);color:var(--text)}
+.hero{padding:48px 0 36px;text-align:center}
+.pill{display:inline-block;background:var(--soft);color:var(--accent-d);font-size:13px;font-weight:600;padding:4px 12px;border-radius:99px}
+h1{font-size:clamp(1.9rem,6.5vw,3.1rem);line-height:1.15;letter-spacing:-.025em;margin:16px auto 14px;max-width:18ch}
+.lead{color:var(--muted);max-width:56ch;margin:0 auto 24px;font-size:1.05rem}
+.cta{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+section{padding:36px 0}
+h2{font-size:clamp(1.4rem,4.5vw,1.9rem);letter-spacing:-.02em;margin:0 0 8px;line-height:1.25}
+.sub{color:var(--muted);margin:0 0 22px;max-width:62ch}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;font:inherit;font-weight:600;font-size:15px;min-height:44px;padding:8px 18px;border-radius:10px;border:1px solid var(--border);background:#fff;color:var(--text);cursor:pointer;text-decoration:none}
+.btn:hover{background:var(--soft)}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.pri:hover{background:var(--accent-d)}
+.btn.sm{min-height:36px;padding:4px 12px;font-size:14px}
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.tab{font:inherit;font-weight:600;font-size:14.5px;min-height:46px;padding:8px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:var(--muted);cursor:pointer}
+.tab[aria-selected=true]{background:var(--soft);border-color:var(--accent);color:var(--accent-d)}
+.panel{border:1px solid var(--border);border-radius:var(--r);background:#fff;padding:18px}
+.panel h3{margin:0 0 4px;font-size:1.15rem}
+.panel>p{margin:0 0 16px;color:var(--muted);font-size:15px}
+.grid{display:grid;gap:14px;grid-template-columns:1fr}
+.field{display:flex;flex-direction:column;gap:5px;min-width:0}
+label{font-weight:600;font-size:14.5px}
+.opt{font-weight:400;color:var(--muted)}
+input[type=text],select{font:inherit;width:100%;min-height:46px;padding:9px 12px;border:1px solid #cfcbdb;border-radius:10px;background:#fff;color:var(--text)}
+input[type=text]:focus-visible,select:focus-visible{outline-offset:1px;border-color:var(--accent)}
+input[aria-invalid=true]{border-color:#b3261e}
+.err{color:#b3261e;font-size:14px;margin:0;min-height:0}
+.err:empty{display:none}
+.chk{display:flex;align-items:center;gap:8px;font-weight:400;font-size:15px}
+.chk input{width:20px;height:20px;accent-color:var(--accent)}
+.row{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+.outhead{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;margin:22px 0 10px;padding-top:18px;border-top:1px solid var(--border)}
+.outhead h4{margin:0;font-size:1rem}
+.empty{color:var(--muted);background:var(--surface);border:1px dashed var(--border);border-radius:12px;padding:16px;margin:0;font-size:15px}
+.items{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.items li{display:flex;flex-direction:column;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 14px}
+.items p{margin:0;white-space:pre-line}
+.lbl{display:block;font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent-d);margin-bottom:2px}
+.meta{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+.items .btn{align-self:flex-start}
+.cards{display:grid;gap:12px;grid-template-columns:1fr}
+.card{border:1px solid var(--border);border-radius:var(--r);padding:16px;background:#fff;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.card h3{margin:0;font-size:1.02rem}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.note{background:var(--soft);border-radius:var(--r);padding:16px 18px;font-size:15px}
+.note p{margin:0 0 10px}
+details{border:1px solid var(--border);border-radius:12px;padding:0 16px;margin-bottom:10px;background:#fff}
+summary{cursor:pointer;font-weight:600;padding:14px 0;min-height:44px}
+details p{margin:0 0 14px;color:var(--muted)}
+footer{border-top:1px solid var(--border);margin-top:20px;padding:24px 0 32px;color:var(--muted);font-size:14.5px}
+footer p{margin:0 0 6px}
+.status{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#1c1b22;color:#fff;padding:10px 16px;border-radius:10px;font-size:14.5px;max-width:calc(100% - 32px);z-index:30;opacity:0;pointer-events:none}
+.status.on{opacity:1}
+@media (prefers-reduced-motion:no-preference){.status{transition:opacity .2s}}
+@media (min-width:640px){.tabs{grid-template-columns:repeat(4,1fr)}.grid.two{grid-template-columns:1fr 1fr}.cards{grid-template-columns:1fr 1fr}.panel{padding:24px}.items li{flex-direction:row;align-items:flex-start;justify-content:space-between}.items .body{flex:1;min-width:0}.hero{padding:72px 0 52px}}
+@media (min-width:900px){.cards{grid-template-columns:repeat(4,1fr)}}
+</style>
+</head>
+<body>
+<a class="skip" href="#tools">Skip to tools</a>
+<header>
+<div class="wrap bar">
+<a class="brand" href="#top" aria-label="CreatorKit AI home">
+<svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="8" fill="#6d5bd0"/><path d="M14 6l2 5.5 5.5 2-5.5 2L14 21l-2-5.5L6.500 13.500l5.500-2z" fill="#fff"/></svg>
+CreatorKit AI</a>
+<nav aria-label="Main"><ul>
+<li><a href="#tools">Tools</a></li><li><a href="#examples">Examples</a></li><li><a href="#faq">FAQ</a></li><li><a href="#about">About</a></li>
+</ul></nav>
+</div>
+</header>
+
+<main id="top">
+<div class="wrap">
+<section class="hero" aria-labelledby="h-hero">
+<span class="pill">Free · No sign-up · Runs in your browser</span>
+<h1 id="h-hero">Prepare short videos faster</h1>
+<p class="lead">Four simple helpers for YouTube Shorts, Reels and TikTok creators: hooks, scripts, titles and descriptions. They use fixed templates and rules, so you get starting points to edit in your own voice.</p>
+<div class="cta"><a class="btn pri" href="#tools">Open the tools</a><a class="btn" href="#examples">See examples</a></div>
+</section>
+
+<section id="tools" aria-labelledby="h-tools">
+<h2 id="h-tools">Tool workspace</h2>
+<p class="sub">Pick a tool, fill in your topic and press Generate. Results appear instantly and are always the same for the same inputs.</p>
+<div class="tabs" role="tablist" aria-label="Tools">
+<button class="tab" role="tab" id="tab-hooks" aria-controls="p-hooks" aria-selected="true">Hook Generator</button>
+<button class="tab" role="tab" id="tab-script" aria-controls="p-script" aria-selected="false" tabindex="-1">Script Maker</button>
+<button class="tab" role="tab" id="tab-titles" aria-controls="p-titles" aria-selected="false" tabindex="-1">Title Generator</button>
+<button class="tab" role="tab" id="tab-desc" aria-controls="p-desc" aria-selected="false" tabindex="-1">Description Maker</button>
+</div>
+
+<div class="panel" role="tabpanel" id="p-hooks" aria-labelledby="tab-hooks">
+<h3>Hook Generator</h3><p>Opening lines for the first seconds of your video.</p>
+<form id="f-hooks" novalidate>
+<div class="grid">
+<div class="field"><label for="t-hooks">Topic</label><input type="text" id="t-hooks" name="topic" maxlength="120" autocomplete="off" placeholder="e.g. budgeting for students" aria-describedby="e-hooks"><p class="err" id="e-hooks" role="alert"></p></div>
+<div class="grid two">
+<div class="field"><label for="niche-hooks">Niche</label><select id="niche-hooks" name="niche" data-pref><option value="general">General</option><option value="education">Education</option><option value="fitness">Fitness</option><option value="tech">Tech</option><option value="finance">Finance</option><option value="food">Food</option><option value="travel">Travel</option><option value="gaming">Gaming</option><option value="lifestyle">Lifestyle</option><option value="business">Business</option></select></div>
+<div class="field"><label for="tone-hooks">Tone</label><select id="tone-hooks" name="tone" data-pref><option value="curious">Curious</option><option value="bold">Bold</option><option value="friendly">Friendly</option><option value="serious">Serious</option><option value="funny">Funny</option></select></div>
+</div>
+</div>
+<div class="row"><button class="btn pri" type="submit">Generate hooks</button><button class="btn" type="button" id="r-hooks">Clear</button></div>
+</form>
+<div class="outhead"><h4>Results</h4><button class="btn sm" type="button" id="ca-hooks" hidden>Copy all</button></div>
+<div id="o-hooks" aria-live="polite"><p class="empty">Your hooks will appear here.</p></div>
+</div>
+
+<div class="panel" role="tabpanel" id="p-script" aria-labelledby="tab-script" hidden>
+<h3>Shorts Script Maker</h3><p>A timed outline with a hook, main content and call to action. Replace the [bracketed] parts with your own points.</p>
+<form id="f-script" novalidate>
+<div class="grid">
+<div class="field"><label for="t-script">Topic</label><input type="text" id="t-script" name="topic" maxlength="120" autocomplete="off" placeholder="e.g. saving money on a student budget" aria-describedby="e-script"><p class="err" id="e-script" role="alert"></p></div>
+<div class="grid two">
+<div class="field"><label for="dur-script">Target duration</label><select id="dur-script" name="dur" data-pref><option value="10">10 seconds</option><option value="15">15 seconds</option><option value="30" selected>30 seconds</option><option value="60">60 seconds</option></select></div>
+<div class="field"><label for="lang-script">Language</label><select id="lang-script" name="lang" data-pref><option value="en">English</option><option value="hi">Hindi</option><option value="hn">Hinglish</option></select></div>
+<div class="field"><label for="tone-script">Tone</label><select id="tone-script" name="tone" data-pref><option value="friendly">Friendly</option><option value="energetic">Energetic</option><option value="serious">Serious</option><option value="funny">Funny</option></select></div>
+<div class="field"><label for="cta-script">Call to action <span class="opt">(optional)</span></label><input type="text" id="cta-script" name="cta" maxlength="100" autocomplete="off" placeholder="e.g. Follow for part 2"></div>
+</div>
+</div>
+<div class="row"><button class="btn pri" type="submit">Generate script</button><button class="btn" type="button" id="r-script">Clear</button></div>
+</form>
+<div class="outhead"><h4>Script</h4><button class="btn sm" type="button" id="ca-script" hidden>Copy all</button></div>
+<div id="o-script" aria-live="polite"><p class="empty">Your script outline will appear here.</p></div>
+</div>
+
+<div class="panel" role="tabpanel" id="p-titles" aria-labelledby="tab-titles" hidden>
+<h3>Title Generator</h3><p>Title ideas to edit and test. No title can promise views.</p>
+<form id="f-titles" novalidate>
+<div class="grid two">
+<div class="field"><label for="t-titles">Topic</label><input type="text" id="t-titles" name="topic" maxlength="120" autocomplete="off" placeholder="e.g. beginner home workout" aria-describedby="e-titles"><p class="err" id="e-titles" role="alert"></p></div>
+<div class="field"><label for="tone-titles">Tone</label><select id="tone-titles" name="tone" data-pref><option value="curious">Curious</option><option value="bold">Bold</option><option value="friendly">Friendly</option><option value="informative">Informative</option><option value="funny">Funny</option></select></div>
+</div>
+<div class="row"><button class="btn pri" type="submit">Generate titles</button><button class="btn" type="button" id="r-titles">Clear</button></div>
+</form>
+<div class="outhead"><h4>Titles</h4><button class="btn sm" type="button" id="ca-titles" hidden>Copy all</button></div>
+<div id="o-titles" aria-live="polite"><p class="empty">Your titles will appear here.</p></div>
+</div>
+
+<div class="panel" role="tabpanel" id="p-desc" aria-labelledby="tab-desc" hidden>
+<h3>Description Maker</h3><p>A short description with optional hashtag suggestions built from your topic words.</p>
+<form id="f-desc" novalidate>
+<div class="grid">
+<div class="field"><label for="t-desc">Topic</label><input type="text" id="t-desc" name="topic" maxlength="120" autocomplete="off" placeholder="e.g. quick street-food recipe" aria-describedby="e-desc"><p class="err" id="e-desc" role="alert"></p></div>
+<div class="grid two">
+<div class="field"><label for="plat-desc">Platform</label><select id="plat-desc" name="plat" data-pref><option value="yt">YouTube Shorts</option><option value="ig">Instagram Reels</option><option value="tt">TikTok</option><option value="fb">Facebook Reels</option></select></div>
+<div class="field"><label for="tone-desc">Tone</label><select id="tone-desc" name="tone" data-pref><option value="friendly">Friendly</option><option value="professional">Professional</option><option value="energetic">Energetic</option><option value="casual">Casual</option></select></div>
+</div>
+<div class="field"><label for="cta-desc">Call to action <span class="opt">(optional)</span></label><input type="text" id="cta-desc" name="cta" maxlength="100" autocomplete="off" placeholder="e.g. Subscribe for weekly recipes"></div>
+<label class="chk"><input type="checkbox" name="tags" checked> Include hashtag suggestions</label>
+</div>
+<div class="row"><button class="btn pri" type="submit">Generate description</button><button class="btn" type="button" id="r-desc">Clear</button></div>
+</form>
+<div class="outhead"><h4>Description</h4><button class="btn sm" type="button" id="ca-desc" hidden>Copy all</button></div>
+<div id="o-desc" aria-live="polite"><p class="empty">Your description will appear here.</p></div>
+</div>
+</section>
+
+<section id="examples" aria-labelledby="h-ex">
+<h2 id="h-ex">Try an example</h2>
+<p class="sub">Each button fills in a sample topic, opens the tool and generates results so you can see how it works.</p>
+<div class="cards">
+<div class="card"><h3>Hooks for a study topic</h3><p>Topic: “exam week study habits”, Education niche.</p><button class="btn sm" type="button" data-ex="0">Try this example</button></div>
+<div class="card"><h3>30-second Hinglish script</h3><p>Topic: “saving money on a student budget”.</p><button class="btn sm" type="button" data-ex="1">Try this example</button></div>
+<div class="card"><h3>Friendly titles</h3><p>Topic: “beginner home workout”.</p><button class="btn sm" type="button" data-ex="2">Try this example</button></div>
+<div class="card"><h3>Description with hashtags</h3><p>Topic: “quick street-food recipe” for YouTube Shorts.</p><button class="btn sm" type="button" data-ex="3">Try this example</button></div>
+</div>
+</section>
+
+<section id="privacy" aria-labelledby="h-priv">
+<h2 id="h-priv">Privacy</h2>
+<div class="note">
+<p>Everything is processed locally in your browser. CreatorKit AI does not send what you type to any server, and it has no accounts, tracking or cookies.</p>
+<label class="chk"><input type="checkbox" id="remember"> Remember my dropdown choices on this device (your topic text is never saved)</label>
+</div>
+</section>
+
+<section id="faq" aria-labelledby="h-faq">
+<h2 id="h-faq">FAQ</h2>
+<details><summary>Is this a real AI model?</summary><p>No. CreatorKit AI uses fixed templates and simple rules written into the page. The text changes with your inputs, but nothing is generated by a live AI model.</p></details>
+<details><summary>Will these titles or hooks make my videos go viral?</summary><p>No tool can promise that. Treat the results as drafts to adapt to your content and audience.</p></details>
+<details><summary>Do I need to be online or sign in?</summary><p>No sign-in is needed. Once the page has loaded, the tools work without any network requests.</p></details>
+<details><summary>Why are there [brackets] in my script?</summary><p>The tool does not know your facts, so it leaves marked spots for your own points. This avoids inventing information for you.</p></details>
+<details><summary>Why do I get the same results every time?</summary><p>Results are deterministic. The same topic and settings always give the same output. Change a word or a setting to get a different mix.</p></details>
+</section>
+
+<section id="about" aria-labelledby="h-about">
+<h2 id="h-about">About</h2>
+<p class="sub">CreatorKit AI is a free, early MVP built to take the blank-page pressure off short-form creators. It is a single static page with no backend, no paid services and no external code. The name refers to the creator-toolkit idea; the tools themselves are simple, transparent templates.</p>
+</section>
+</div>
+</main>
+
+<footer>
+<div class="wrap">
+<p><strong>CreatorKit AI</strong> – free template-based helpers for short-form creators.</p>
+<p>Runs locally in your browser. Inputs are not sent to a server. Outputs are template-based suggestions, not guarantees of results.</p>
+</div>
+</footer>
+<div id="status" class="status" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+'use strict';
+var $ = function (id) { return document.getElementById(id); };
+var clean = function (s) { return s.replace(/\s+/g, ' ').trim(); };
+var cap = function (s) { return s.charAt(0).toUpperCase() + s.slice(1); };
+var hash = function (s) { var h = 5381; for (var i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) >>> 0; return h; };
+var rot = function (a, seed, n) { var k = seed % a.length; return a.slice(k).concat(a.slice(0, k)).slice(0, n); };
+var fill = function (t, v) { return t.replace(/\{(\w+)\}/g, function (m, k) { return v[k] !== undefined ? v[k] : m; }); };
+var uniq = function (a) { return a.filter(function (x, i) { return a.indexOf(x) === i; }); };
+
+var WHO = { general: 'people', education: 'students', fitness: 'beginners', tech: 'tech fans', finance: 'budget-minded viewers', food: 'home cooks', travel: 'travelers', gaming: 'gamers', lifestyle: 'busy people', business: 'small business owners' };
+var HOOKS = {
+  curious: ['What nobody explains about {t}', 'Ever wondered how {t} really works?', 'Why does {t} trip up so many {who}?', 'Here\'s a simple way to think about {t}', 'A quick question about {t} before you scroll', 'New to {n}? Start with {t}', 'Let\'s unpack {t} in under a minute'],
+  bold: ['Stop making {t} harder than it is', 'Forget what you\'ve heard about {t}', 'Try this before your next {t} attempt', 'A common {t} mistake, and the quick fix', 'Don\'t skip this part of {t}', 'If you\'re into {n}, {t} deserves 30 seconds', 'Give me 30 seconds and {t} gets simpler'],
+  friendly: ['Hey {who}, let\'s talk about {t}', 'A tip about {t} I wish I knew sooner', 'Let\'s make {t} a little easier together', 'Quick {t} tip for {who}', 'Save this for when you need help with {t}', 'Starting with {t}? Here\'s a gentle first step', 'A small tip for {t}, easy to try today'],
+  serious: ['The key points about {t}, in one video', 'What to know before you try {t}', 'A clear look at {t}', 'Why {t} matters for {who}', 'Read this before you start {t}', 'The basics of {t}, explained plainly', 'A focused guide to {t}'],
+  funny: ['Me explaining {t} like I\'m an expert', 'POV: you finally try {t}', 'Tell me you\'re into {t} without telling me', '{who} and {t}: it\'s complicated', 'Me, pretending {t} is easy', 'Nobody asked, but here\'s {t}', 'Me vs. {t}: round one']
+};
+var SH = {
+  en: { hook: { friendly: 'Hey! Quick one on {t}.', energetic: 'Stop scrolling: {t} in seconds!', serious: 'Here\'s what you need to know about {t}.', funny: 'Me trying to explain {t} in one short video:' }, ord: ['First', 'Next', 'Then', 'Also', 'Last'], pt: '{o}: [your point about {t}, one short sentence].', cta: 'Follow for more.' },
+  hi: { hook: { friendly: 'नमस्ते! {t} के बारे में एक छोटी बात।', energetic: 'रुकिए! {t} जानिए कुछ ही सेकंड में!', serious: '{t} के बारे में यह ज़रूर जानिए।', funny: 'मैं, एक छोटे वीडियो में {t} समझाने की कोशिश करते हुए:' }, ord: ['पहला', 'दूसरा', 'तीसरा', 'चौथा', 'आख़िरी'], pt: '{o}: [{t} के बारे में आपका पॉइंट, एक छोटा वाक्य]।', cta: 'और वीडियो के लिए फ़ॉलो करें।' },
+  hn: { hook: { friendly: 'Hey! {t} ke baare mein ek chhoti si baat.', energetic: 'Ruko! {t} seconds mein samjho!', serious: '{t} ke baare mein yeh jaanna zaroori hai.', funny: 'Main, ek short video mein {t} samjhane ki koshish karte hue:' }, ord: ['Pehla', 'Doosra', 'Teesra', 'Chautha', 'Aakhri'], pt: '{o}: [{t} ke baare mein aapka point, ek chhota sentence].', cta: 'Aisi aur videos ke liye follow karo.' }
+};
+var PTS = { 10: 1, 15: 2, 30: 3, 60: 5 };
+var TITLES = {
+  curious: ['What is {t}? A quick explainer', 'How does {t} actually work?', '{T}: questions worth asking', 'Why {t} is worth a closer look', 'Is {t} easier than it looks?', 'The simple idea behind {t}', 'What I\'d ask before trying {t}', '{T} explained in a short video'],
+  bold: ['Stop overcomplicating {t}', '{T}: try this instead', 'A better way to approach {t}', 'Don\'t start {t} without this', '{T} mistakes to avoid', 'Rethink how you do {t}', 'The {t} tip worth trying today', 'Keep {t} simple. Here\'s how'],
+  friendly: ['Let\'s talk about {t}', 'A friendly guide to {t}', '{T} for beginners', 'Easy {t} tips to try today', 'Getting started with {t}', 'Your quick {t} starter guide', 'Small steps for {t}', '{T}, made simple'],
+  informative: ['{T}: the key points', '{T} explained simply', 'A quick guide to {t}', 'What to know about {t}', '{T}: the basics', '{T} step by step', 'Understanding {t} quickly', '{T}: a short overview'],
+  funny: ['Me vs. {t}', '{T}, but make it fun', 'POV: you\'re learning {t}', 'Trying {t} so you don\'t have to', '{T} is a whole mood', 'My honest take on {t}', 'When {t} finally clicks', '{T}: no stress, just vibes']
+};
+var OPEN = { friendly: 'Today\'s short video is all about {t}.', professional: 'This short video covers {t}.', energetic: 'Quick and to the point: {t}!', casual: 'Just a quick one about {t}.' };
+var MID = { yt: 'Watch to the end, and tell me in the comments what you\'d like to see next.', ig: 'Save this for later and share it with someone who might find it useful.', tt: 'Watch till the end and share your thoughts in the comments.', fb: 'Share it with a friend who might like it and tell us what you think.' };
+var LINE = ['Short, simple and easy to rewatch.', 'A quick look with ideas you can try on your own.', 'A short video you can watch in a moment.'];
+var PTAG = { yt: ['#Shorts', '#YouTubeShorts'], ig: ['#Reels', '#InstagramReels'], tt: ['#TikTok', '#ShortVideo'], fb: ['#FacebookReels', '#Reels'] };
+var STOP = ['the', 'and', 'for', 'with', 'how', 'what', 'why', 'your', 'you', 'from', 'that', 'this', 'are', 'into', 'about', 'can', 'tips'];
+
+function tags(topic) {
+  var w = topic.toLowerCase().replace(/[^\p{L}\p{N}\s]/gu, ' ').split(/\s+/).filter(function (x) { return x.length > 2 && STOP.indexOf(x) < 0; });
+  w = uniq(w);
+  var out = [];
+  if (w.length > 1) { var j = w.slice(0, 3).join(''); if (j.length <= 30) out.push('#' + j); }
+  w.slice(0, 3).forEach(function (x) { out.push('#' + x); });
+  return out;
+}
+
+var BUILD = {
+  hooks: function (t, f) {
+    var tone = f.tone.value, n = f.niche.selectedOptions[0].text.toLowerCase();
+    var v = { t: t, T: cap(t), who: WHO[f.niche.value], n: n };
+    return rot(HOOKS[tone], hash(t.toLowerCase() + f.niche.value + tone), 6).map(function (s) { return { text: cap(fill(s, v)) }; });
+  },
+  script: function (t, f) {
+    var d = +f.dur.value, L = SH[f.lang.value], tone = f.tone.value, v = { t: t };
+    var he = d <= 15 ? 2 : 3, cs = d - (d >= 30 ? 5 : 3), np = PTS[d], lines = [];
+    for (var i = 0; i < np; i++) lines.push(fill(L.pt, { o: L.ord[i === np - 1 && np > 1 ? 4 : i], t: t }));
+    var cta = clean(f.cta.value) || L.cta;
+    return [
+      { label: 'Hook (0–' + he + 's)', text: fill(L.hook[tone], v), meta: 'Aim for about ' + Math.round(d * 2.5) + ' spoken words overall.' },
+      { label: 'Main content (' + he + '–' + cs + 's)', text: lines.join('\n') },
+      { label: 'Call to action (' + cs + '–' + d + 's)', text: cta }
+    ];
+  },
+  titles: function (t, f) {
+    var tone = f.tone.value, v = { t: t, T: cap(t) };
+    return rot(TITLES[tone], hash(t.toLowerCase() + tone), 8).map(function (s) {
+      var x = cap(fill(s, v)), m = x.length + ' characters';
+      if (x.length > 100) m += ' (over YouTube\'s 100-character title limit)';
+      return { text: x, meta: m };
+    });
+  },
+  desc: function (t, f) {
+    var p = f.plat.value, tone = f.tone.value, seed = hash(t.toLowerCase() + p + tone);
+    var cta = clean(f.cta.value) || 'Follow for more short videos.';
+    var body = [fill(OPEN[tone], { t: t }), rot(LINE, seed, 1)[0], MID[p], cta].join('\n');
+    var out = [{ label: 'Description', text: body }];
+    if (f.tags.checked) out.push({ label: 'Hashtag suggestions', text: uniq(tags(t).concat(PTAG[p])).slice(0, 8).join(' '), meta: 'Review and keep only the tags that fit your video.' });
+    return out;
+  }
+};
+
+var store = {}, timer;
+function say(msg) {
+  var s = $('status'); s.textContent = msg; s.classList.add('on');
+  clearTimeout(timer); timer = setTimeout(function () { s.classList.remove('on'); }, 2400);
+}
+function copy(text, btn) {
+  var label = btn ? btn.textContent : '';
+  function done(ok) {
+    say(ok ? 'Copied to clipboard' : 'Could not copy. Please select the text and copy it manually.');
+    if (ok && btn) { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = label; }, 1500); }
+  }
+  function fb() {
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.setAttribute('readonly', ''); ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
+    document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, text.length);
+    var ok = false; try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+    document.body.removeChild(ta); if (btn) btn.focus(); done(ok);
+  }
+  if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(function () { done(true); }, fb);
+  else fb();
+}
+function render(name, items) {
+  var o = $('o-' + name); o.textContent = '';
+  var ul = document.createElement('ul'); ul.className = 'items';
+  items.forEach(function (it) {
+    var li = document.createElement('li'), b = document.createElement('div'); b.className = 'body';
+    if (it.label) { var l = document.createElement('strong'); l.className = 'lbl'; l.textContent = it.label; b.appendChild(l); }
+    var p = document.createElement('p'); p.textContent = it.text; b.appendChild(p);
+    if (it.meta) { var m = document.createElement('span'); m.className = 'meta'; m.textContent = it.meta; b.appendChild(m); }
+    var c = document.createElement('button'); c.type = 'button'; c.className = 'btn sm'; c.textContent = 'Copy';
+    c.setAttribute('aria-label', 'Copy ' + (it.label ? it.label.toLowerCase() : 'this result'));
+    c.addEventListener('click', function () { copy(it.text, c); });
+    li.appendChild(b); li.appendChild(c); ul.appendChild(li);
+  });
+  o.appendChild(ul); store[name] = items; $('ca-' + name).hidden = false;
+}
+function allText(name) {
+  return (store[name] || []).map(function (i) { return (i.label ? i.label + '\n' : '') + i.text; }).join(i0(name));
+}
+function i0(name) { return (name === 'script' || name === 'desc') ? '\n\n' : '\n'; }
+function clearOut(name, msg) {
+  var o = $('o-' + name); o.textContent = '';
+  var p = document.createElement('p'); p.className = 'empty'; p.textContent = msg; o.appendChild(p);
+  $('ca-' + name).hidden = true; store[name] = [];
+}
+var EMPTY = { hooks: 'Your hooks will appear here.', script: 'Your script outline will appear here.', titles: 'Your titles will appear here.', desc: 'Your description will appear here.' };
+
+function run(name) {
+  var f = $('f-' + name), inp = $('t-' + name), err = $('e-' + name), topic = clean(inp.value);
+  if (!topic) {
+    err.textContent = 'Please enter a topic first, for example: “budgeting for students”.';
+    inp.setAttribute('aria-invalid', 'true'); inp.focus(); clearOut(name, EMPTY[name]); return;
+  }
+  err.textContent = ''; inp.removeAttribute('aria-invalid');
+  try { render(name, BUILD[name](topic, f)); }
+  catch (e) { err.textContent = 'Something went wrong while generating. Please check your inputs and try again.'; }
+}
+Object.keys(BUILD).forEach(function (name) {
+  var f = $('f-' + name);
+  f.addEventListener('submit', function (e) { e.preventDefault(); run(name); });
+  $('r-' + name).addEventListener('click', function () {
+    f.reset(); $('e-' + name).textContent = ''; $('t-' + name).removeAttribute('aria-invalid');
+    clearOut(name, EMPTY[name]); $('t-' + name).focus(); say('Cleared');
+  });
+  $('ca-' + name).addEventListener('click', function () { copy(allText(name), $('ca-' + name)); });
+  $('t-' + name).addEventListener('input', function () { $('e-' + name).textContent = ''; this.removeAttribute('aria-invalid'); });
+});
+
+var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+function showTab(name, focus) {
+  tabs.forEach(function (t) {
+    var on = t.id === 'tab-' + name;
+    t.setAttribute('aria-selected', on ? 'true' : 'false'); t.tabIndex = on ? 0 : -1;
+    $(t.getAttribute('aria-controls')).hidden = !on;
+    if (on && focus) t.focus();
+  });
+}
+tabs.forEach(function (t, i) {
+  t.addEventListener('click', function () { showTab(t.id.slice(4)); });
+  t.addEventListener('keydown', function (e) {
+    var k = e.key, n = -1;
+    if (k === 'ArrowRight') n = (i + 1) % tabs.length; else if (k === 'ArrowLeft') n = (i + tabs.length - 1) % tabs.length;
+    else if (k === 'Home') n = 0; else if (k === 'End') n = tabs.length - 1;
+    if (n > -1) { e.preventDefault(); showTab(tabs[n].id.slice(4), true); }
+  });
+});
+
+var EX = [
+  { tool: 'hooks', topic: 'exam week study habits', set: { niche: 'education', tone: 'curious' } },
+  { tool: 'script', topic: 'saving money on a student budget', set: { dur: '30', lang: 'hn', tone: 'friendly' } },
+  { tool: 'titles', topic: 'beginner home workout', set: { tone: 'friendly' } },
+  { tool: 'desc', topic: 'quick street-food recipe', set: { plat: 'yt', tone: 'friendly' } }
+];
+Array.prototype.forEach.call(document.querySelectorAll('[data-ex]'), function (b) {
+  b.addEventListener('click', function () {
+    var ex = EX[+b.getAttribute('data-ex')], f = $('f-' + ex.tool);
+    f.elements.topic.value = ex.topic;
+    Object.keys(ex.set).forEach(function (k) { f.elements[k].value = ex.set[k]; });
+    showTab(ex.tool); run(ex.tool); $('tools').scrollIntoView();
+  });
+});
+
+var KEY = 'creatorkit-prefs', rem = $('remember'), sels = Array.prototype.slice.call(document.querySelectorAll('select[data-pref]'));
+function savePrefs() {
+  try {
+    if (!rem.checked) { localStorage.removeItem(KEY); return; }
+    var o = {}; sels.forEach(function (s) { o[s.id] = s.value; });
+    localStorage.setItem(KEY, JSON.stringify(o));
+  } catch (e) { say('Preferences could not be saved in this browser.'); }
+}
+try {
+  var saved = JSON.parse(localStorage.getItem(KEY) || 'null');
+  if (saved) { rem.checked = true; sels.forEach(function (s) { if (saved[s.id] !== undefined) s.value = saved[s.id]; }); }
+} catch (e) { /* storage unavailable: preferences simply are not remembered */ }
+rem.addEventListener('change', function () { savePrefs(); say(rem.checked ? 'Dropdown choices will be remembered' : 'Saved choices removed'); });
+sels.forEach(function (s) { s.addEventListener('change', function () { if (rem.checked) savePrefs(); }); });
+})();
+</script>
+</body>
+  </html>
