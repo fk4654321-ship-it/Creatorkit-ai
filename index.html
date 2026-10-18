@@ -72,6 +72,7 @@ input[type=text],select{font:inherit;width:100%;min-height:46px;padding:9px 12px
 input::placeholder{color:#7f86a8;opacity:1}
 input[type=text]:focus-visible,select:focus-visible{outline-offset:1px;border-color:var(--accent2)}
 input[aria-invalid=true]{border-color:#ff9b93}
+.field.wide{grid-column:1/-1}
 .err{color:#ff9b93;font-size:14px;margin:0}
 .err:empty{display:none}
 .chk{display:flex;align-items:center;gap:10px;font-weight:400;font-size:15px;min-height:44px}
@@ -179,6 +180,7 @@ CreatorKit AI</a>
 <div class="grid two">
 <div class="field"><label for="niche-hooks">Niche</label><select id="niche-hooks" name="niche" data-pref><option value="general">General</option><option value="education">Education</option><option value="fitness">Fitness</option><option value="tech">Tech</option><option value="finance">Finance</option><option value="food">Food</option><option value="travel">Travel</option><option value="gaming">Gaming</option><option value="lifestyle">Lifestyle</option><option value="business">Business</option></select></div>
 <div class="field"><label for="tone-hooks">Tone</label><select id="tone-hooks" name="tone" data-pref><option value="curious">Curious</option><option value="bold">Bold</option><option value="friendly">Friendly</option><option value="serious">Serious</option><option value="funny">Funny</option></select></div>
+<div class="field"><label for="style-hooks">Hook style</label><select id="style-hooks" name="hstyle" data-pref><option value="mix">Mix of styles</option><option value="question">Question</option><option value="curiosity">Curiosity</option><option value="fact">Surprising fact</option><option value="problem">Problem and fix</option><option value="story">Story</option></select></div>
 </div>
 </div>
 <div class="row"><button class="btn pri" type="submit">Generate hooks</button><button class="btn" type="button" id="r-hooks">Clear</button></div>
@@ -196,7 +198,8 @@ CreatorKit AI</a>
 <div class="field"><label for="dur-script">Target duration</label><select id="dur-script" name="dur" data-pref><option value="10">10 seconds</option><option value="15">15 seconds</option><option value="30" selected>30 seconds</option><option value="60">60 seconds</option></select></div>
 <div class="field"><label for="lang-script">Language</label><select id="lang-script" name="lang" data-pref><option value="en">English</option><option value="hi">Hindi</option><option value="hn">Hinglish</option></select></div>
 <div class="field"><label for="tone-script">Tone</label><select id="tone-script" name="tone" data-pref><option value="friendly">Friendly</option><option value="energetic">Energetic</option><option value="serious">Serious</option><option value="funny">Funny</option></select></div>
-<div class="field"><label for="cta-script">Call to action <span class="opt">(optional)</span></label><input type="text" id="cta-script" name="cta" maxlength="100" autocomplete="off" placeholder="e.g. Follow for part 2"></div>
+<div class="field"><label for="niche-script">Niche</label><select id="niche-script" name="niche" data-pref><option value="general">General</option><option value="education">Education</option><option value="fitness">Fitness</option><option value="tech">Tech</option><option value="finance">Finance</option><option value="food">Food</option><option value="travel">Travel</option><option value="gaming">Gaming</option><option value="lifestyle">Lifestyle</option><option value="business">Business</option></select></div>
+<div class="field wide"><label for="cta-script">Call to action <span class="opt">(optional)</span></label><input type="text" id="cta-script" name="cta" maxlength="100" autocomplete="off" placeholder="e.g. Follow for part 2"></div>
 </div>
 </div>
 <div class="row"><button class="btn pri" type="submit">Generate script</button><button class="btn" type="button" id="r-script">Clear</button></div>
@@ -211,6 +214,7 @@ CreatorKit AI</a>
 <div class="grid two">
 <div class="field"><label for="t-titles">Topic</label><input type="text" id="t-titles" name="topic" maxlength="120" autocomplete="off" placeholder="e.g. beginner home workout" aria-describedby="e-titles"><p class="err" id="e-titles" role="alert"></p></div>
 <div class="field"><label for="tone-titles">Tone</label><select id="tone-titles" name="tone" data-pref><option value="curious">Curious</option><option value="bold">Bold</option><option value="friendly">Friendly</option><option value="informative">Informative</option><option value="funny">Funny</option></select></div>
+<div class="field"><label for="niche-titles">Niche</label><select id="niche-titles" name="niche" data-pref><option value="general">General</option><option value="education">Education</option><option value="fitness">Fitness</option><option value="tech">Tech</option><option value="finance">Finance</option><option value="food">Food</option><option value="travel">Travel</option><option value="gaming">Gaming</option><option value="lifestyle">Lifestyle</option><option value="business">Business</option></select></div>
 </div>
 <div class="row"><button class="btn pri" type="submit">Generate titles</button><button class="btn" type="button" id="r-titles">Clear</button></div>
 </form>
@@ -226,6 +230,7 @@ CreatorKit AI</a>
 <div class="grid two">
 <div class="field"><label for="plat-desc">Platform</label><select id="plat-desc" name="plat" data-pref><option value="yt">YouTube Shorts</option><option value="ig">Instagram Reels</option><option value="tt">TikTok</option><option value="fb">Facebook Reels</option></select></div>
 <div class="field"><label for="tone-desc">Tone</label><select id="tone-desc" name="tone" data-pref><option value="friendly">Friendly</option><option value="professional">Professional</option><option value="energetic">Energetic</option><option value="casual">Casual</option></select></div>
+<div class="field"><label for="niche-desc">Niche</label><select id="niche-desc" name="niche" data-pref><option value="general">General</option><option value="education">Education</option><option value="fitness">Fitness</option><option value="tech">Tech</option><option value="finance">Finance</option><option value="food">Food</option><option value="travel">Travel</option><option value="gaming">Gaming</option><option value="lifestyle">Lifestyle</option><option value="business">Business</option></select></div>
 </div>
 <div class="field"><label for="cta-desc">Call to action <span class="opt">(optional)</span></label><input type="text" id="cta-desc" name="cta" maxlength="100" autocomplete="off" placeholder="e.g. Subscribe for weekly recipes"></div>
 <label class="chk"><input type="checkbox" name="tags" checked> Include hashtag suggestions</label>
@@ -262,7 +267,7 @@ CreatorKit AI</a>
 <details><summary>Is this a real AI model?</summary><p>No. CreatorKit AI uses fixed templates and simple rules written into the page. The text changes with your inputs, but nothing is generated by a live AI model.</p></details>
 <details><summary>Will these titles or hooks make my videos go viral?</summary><p>No tool can promise that. Treat the results as drafts to adapt to your content and audience.</p></details>
 <details><summary>Do I need to be online or sign in?</summary><p>No sign-in is needed. Once the page has loaded, the tools work without any network requests.</p></details>
-<details><summary>Why are there [brackets] in my script?</summary><p>The tool does not know your facts, so it leaves marked spots for your own points. This avoids inventing information for you.</p></details>
+<details><summary>Why are there [brackets] in my results?</summary><p>The tools do not know your facts or stories, so they leave marked spots for your own points, verified facts and examples. This avoids inventing information for you.</p></details>
 <details><summary>Why do I get the same results every time?</summary><p>Results are deterministic. The same topic and settings always give the same output. Change a word or a setting to get a different mix.</p></details>
 </section>
 
@@ -295,73 +300,223 @@ var rot = function (a, seed, n) { var k = seed % a.length; return a.slice(k).con
 var fill = function (t, v) { return t.replace(/\{(\w+)\}/g, function (m, k) { return v[k] !== undefined ? v[k] : m; }); };
 var uniq = function (a) { return a.filter(function (x, i) { return a.indexOf(x) === i; }); };
 
-var WHO = { general: 'people', education: 'students', fitness: 'beginners', tech: 'tech fans', finance: 'budget-minded viewers', food: 'home cooks', travel: 'travelers', gaming: 'gamers', lifestyle: 'busy people', business: 'small business owners' };
-var HOOKS = {
-  curious: ['What nobody explains about {t}', 'Ever wondered how {t} really works?', 'Why does {t} trip up so many {who}?', 'Here\'s a simple way to think about {t}', 'A quick question about {t} before you scroll', 'New to {n}? Start with {t}', 'Let\'s unpack {t} in under a minute'],
-  bold: ['Stop making {t} harder than it is', 'Forget what you\'ve heard about {t}', 'Try this before your next {t} attempt', 'A common {t} mistake, and the quick fix', 'Don\'t skip this part of {t}', 'If you\'re into {n}, {t} deserves 30 seconds', 'Give me 30 seconds and {t} gets simpler'],
-  friendly: ['Hey {who}, let\'s talk about {t}', 'A tip about {t} I wish I knew sooner', 'Let\'s make {t} a little easier together', 'Quick {t} tip for {who}', 'Save this for when you need help with {t}', 'Starting with {t}? Here\'s a gentle first step', 'A small tip for {t}, easy to try today'],
-  serious: ['The key points about {t}, in one video', 'What to know before you try {t}', 'A clear look at {t}', 'Why {t} matters for {who}', 'Read this before you start {t}', 'The basics of {t}, explained plainly', 'A focused guide to {t}'],
-  funny: ['Me explaining {t} like I\'m an expert', 'POV: you finally try {t}', 'Tell me you\'re into {t} without telling me', '{who} and {t}: it\'s complicated', 'Me, pretending {t} is easy', 'Nobody asked, but here\'s {t}', 'Me vs. {t}: round one']
+var sel = function (a, seed, salt) { return a[hash(seed + '|' + salt) % a.length]; };
+var lo = function (s) { return s.charAt(0).toLowerCase() + s.slice(1); };
+var NI = {
+  general: { who: "people", pain: "getting started", tip: "one practical step", tag: "", note: "", gist: "You will get a simple starting point you can adapt to your own situation." },
+  education: { who: "students", pain: "staying focused", tip: "one study method you actually use", tag: "#learning", note: "", gist: "The focus is on clear, practical ideas you can use in your next study session." },
+  fitness: { who: "beginners", pain: "staying consistent", tip: "one simple move or habit", tag: "#fitness", note: "This is general information, not medical advice. Go at your own pace and check with a professional if you are unsure.", gist: "The focus is on simple ideas beginners can try at their own pace." },
+  tech: { who: "tech fans", pain: "confusing settings", tip: "one setting, shortcut or feature", tag: "#tech", note: "Menus and steps can differ between devices and versions.", gist: "The focus is on clear steps and what to look for." },
+  finance: { who: "budget-minded viewers", pain: "keeping track of spending", tip: "one habit you use with your own money", tag: "#personalfinance", note: "This is general information, not financial advice.", gist: "The focus is on plain-language ideas for everyday money decisions." },
+  food: { who: "home cooks", pain: "deciding what to cook", tip: "one ingredient or technique", tag: "#food", note: "Adjust ingredients and quantities to your own needs and allergies.", gist: "The focus is on simple methods you can adjust to your own kitchen." },
+  travel: { who: "travelers", pain: "planning a trip", tip: "one place, route or planning step", tag: "#travel", note: "Prices, hours and rules change, so check official sources before you go.", gist: "The focus is on practical tips for planning and getting around." },
+  gaming: { who: "gamers", pain: "improving your skills", tip: "one move, setting or strategy", tag: "#gaming", note: "", gist: "The focus is on tips and ideas you can try in your next session." },
+  lifestyle: { who: "busy people", pain: "finding enough time", tip: "one small routine", tag: "#lifestyle", note: "", gist: "The focus is on small changes that fit into a busy day." },
+  business: { who: "small business owners", pain: "doing everything at once", tip: "one practical step", tag: "#smallbusiness", note: "These are general tips, not professional advice.", gist: "The focus is on practical ideas you can adapt to your own business." }
 };
-var SH = {
-  en: { hook: { friendly: 'Hey! Quick one on {t}.', energetic: 'Stop scrolling: {t} in seconds!', serious: 'Here\'s what you need to know about {t}.', funny: 'Me trying to explain {t} in one short video:' }, ord: ['First', 'Next', 'Then', 'Also', 'Last'], pt: '{o}: [your point about {t}, one short sentence].', cta: 'Follow for more.' },
-  hi: { hook: { friendly: 'नमस्ते! {t} के बारे में एक छोटी बात।', energetic: 'रुकिए! {t} जानिए कुछ ही सेकंड में!', serious: '{t} के बारे में यह ज़रूर जानिए।', funny: 'मैं, एक छोटे वीडियो में {t} समझाने की कोशिश करते हुए:' }, ord: ['पहला', 'दूसरा', 'तीसरा', 'चौथा', 'आख़िरी'], pt: '{o}: [{t} के बारे में आपका पॉइंट, एक छोटा वाक्य]।', cta: 'और वीडियो के लिए फ़ॉलो करें।' },
-  hn: { hook: { friendly: 'Hey! {t} ke baare mein ek chhoti si baat.', energetic: 'Ruko! {t} seconds mein samjho!', serious: '{t} ke baare mein yeh jaanna zaroori hai.', funny: 'Main, ek short video mein {t} samjhane ki koshish karte hue:' }, ord: ['Pehla', 'Doosra', 'Teesra', 'Chautha', 'Aakhri'], pt: '{o}: [{t} ke baare mein aapka point, ek chhota sentence].', cta: 'Aisi aur videos ke liye follow karo.' }
+var HW = { hi: { def: "दोस्तों", education: "स्टूडेंट्स" }, hn: { def: "dosto", education: "students" } };
+var VERBS = /^(save|learn|build|make|cook|start|grow|write|create|stop|fix|improve|manage|lose|invest|edit|film|speak|find|choose|avoid|master|boost|reduce|organize|prepare|pack|get|use|beat|win)\b/i;
+
+// Reads the topic once and works out whether it is a noun phrase (n), a how-to / action (h) or a question (q).
+function parse(raw, niche) {
+  var c = clean(raw), t = c.replace(/[\s.!?:;,]+$/, '') || c, k = 'n', a = '', m = t.match(/^(?:how (?:to|do i|can i|do you|can you|should i)|ways to|tips to|steps to)\s+(.+)$/i);
+  if (m) { k = 'h'; a = m[1]; }
+  else if (VERBS.test(t)) { k = 'h'; a = lo(t); }
+  else if (/\?\s*$/.test(c) || /^(?:why|what|when|where|who|which|is|are|can|does|do|did|should|will)\s/i.test(t)) k = 'q';
+  var n = NI[niche] || NI.general;
+  return { t: t, T: cap(t), q: t, Q: cap(t), a: a, k: k, who: n.who, pain: n.pain, tip: n.tip };
+}
+
+// ---- Hooks: five styles. u = any topic, n = noun topic, h = how-to topic, q = question topic.
+var HST = ['question', 'curiosity', 'fact', 'problem', 'story'];
+var HNAME = { question: 'Question', curiosity: 'Curiosity', fact: 'Surprising fact', problem: 'Problem and fix', story: 'Story' };
+var HMETA = { fact: 'Replace the [brackets] with a fact you have checked yourself.', story: 'Use this only if it matches your real experience, and edit the details.' };
+var HK = {
+  question: {
+    u: ["Honest question about {t}: are you making it harder than it needs to be?", "Be honest: how much do you really know about {t}?", "Quick question about {t}: where do {who} usually get stuck?"],
+    n: ["What makes {t} feel so complicated?", "Why do {who} struggle with {t}?", "What is the first thing {who} should know about {t}?", "Do you know the first step for {t}?"],
+    h: ["Do you know how to {a}, or are you guessing?", "What is the easiest first step to {a}?", "What stops {who} from being able to {a}?"],
+    q: ["Quick one: {q}?", "Be honest: {q}?"]
+  },
+  curiosity: {
+    u: ["There is a part of {t} that rarely gets explained.", "There is more to {t} than the usual advice covers.", "Here is an angle on {t} that is easy to miss."],
+    n: ["The simple idea behind {t} that makes the rest easier.", "Before you try {t}, here is a detail worth knowing.", "The whole picture on {t}, in one short video.", "Here is one thing to notice about {t}."],
+    h: ["Before you try to {a}, here is a detail worth knowing.", "There is a small shift that makes it easier to {a}.", "Here is the part of learning to {a} that is easy to miss."],
+    q: ["Let us find out: {q}?", "Here is a question worth thirty seconds: {q}?"]
+  },
+  fact: {
+    u: ["[A fact about {t} you have verified] and why it matters for {who}.", "Here is something about {t} worth knowing: [your verified fact].", "Did you know? [One checked fact about {t}]."],
+    n: ["One verified fact about {t}, and what it means for you: [fact].", "The detail people overlook about {t}: [your verified fact].", "A detail about {t} that is easy to get wrong: [your verified fact].", "[A surprising, true detail about {t}] and how {who} can use it."],
+    h: ["A fact that helps when you {a}: [your verified fact].", "[Your verified fact], and what it means when you try to {a}.", "Before you {a}, know this: [your verified fact]."],
+    q: ["{Q}? Here is [one fact you have checked] that helps answer it.", "The short answer to {q}? [Your verified fact]."]
+  },
+  problem: {
+    u: ["Struggling with {t}? Here is a simple fix to try today.", "If you feel stuck on {t}, start with this one step.", "Stuck on {t}? Try this before you give up."],
+    n: ["{T} not working? Check this one thing first.", "Having trouble with {pain}? Start by looking at {t}.", "A simple way to make {t} less stressful for {who}.", "The first thing to check when you feel stuck on {t}."],
+    h: ["Struggling to {a}? Start with this.", "Can’t seem to {a}? Try this one change.", "The first thing to fix when you are trying to {a}."],
+    q: ["Stuck on this: {q}? Here is a simple way to work it out.", "Confused by {q}? Here is a clear way to think about it."]
+  },
+  story: {
+    u: ["I used to find {t} confusing. Here is what helped.", "When I first looked into {t}, I got one thing wrong.", "Here is how I would approach {t} if I were starting over."],
+    n: ["My first attempt at {t} went [how it went], and here is what I learned.", "Here is the moment {t} finally made sense for me.", "A short story about {t}: [what happened], and what I would do differently.", "I asked myself one question about {t}, and it simplified things."],
+    h: ["I used to struggle to {a}. Here is the change that helped.", "Here is how I finally learned to {a}.", "If I had to {a} again from scratch, this is where I would start."],
+    q: ["Here is how I would answer this one: {q}?", "Let me walk you through this one: {q}?"]
+  }
 };
-var PTS = { 10: 1, 15: 2, 30: 3, 60: 5 };
-var TITLES = {
-  curious: ['What is {t}? A quick explainer', 'How does {t} actually work?', '{T}: questions worth asking', 'Why {t} is worth a closer look', 'Is {t} easier than it looks?', 'The simple idea behind {t}', 'What I\'d ask before trying {t}', '{T} explained in a short video'],
-  bold: ['Stop overcomplicating {t}', '{T}: try this instead', 'A better way to approach {t}', 'Don\'t start {t} without this', '{T} mistakes to avoid', 'Rethink how you do {t}', 'The {t} tip worth trying today', 'Keep {t} simple. Here\'s how'],
-  friendly: ['Let\'s talk about {t}', 'A friendly guide to {t}', '{T} for beginners', 'Easy {t} tips to try today', 'Getting started with {t}', 'Your quick {t} starter guide', 'Small steps for {t}', '{T}, made simple'],
-  informative: ['{T}: the key points', '{T} explained simply', 'A quick guide to {t}', 'What to know about {t}', '{T}: the basics', '{T} step by step', 'Understanding {t} quickly', '{T}: a short overview'],
-  funny: ['Me vs. {t}', '{T}, but make it fun', 'POV: you\'re learning {t}', 'Trying {t} so you don\'t have to', '{T} is a whole mood', 'My honest take on {t}', 'When {t} finally clicks', '{T}: no stress, just vibes']
+var TP = {
+  friendly: ["Hey {who}, ", "Friendly tip: ", "Quick one for {who}: "],
+  bold: ["Stop scrolling: ", "Be honest: ", "Real talk: "],
+  funny: ["Plot twist: ", "Not to be dramatic, but ", "Hot take: "],
+  serious: ["Worth knowing: ", "Before you start: ", "In short: "],
+  curious: ["Quick thought: ", "Something to consider: ", "Think about this: "]
 };
-var OPEN = { friendly: 'Today\'s short video is all about {t}.', professional: 'This short video covers {t}.', energetic: 'Quick and to the point: {t}!', casual: 'Just a quick one about {t}.' };
-var MID = { yt: 'Watch to the end, and tell me in the comments what you\'d like to see next.', ig: 'Save this for later and share it with someone who might find it useful.', tt: 'Watch till the end and share your thoughts in the comments.', fb: 'Share it with a friend who might like it and tell us what you think.' };
-var LINE = ['Short, simple and easy to rewatch.', 'A quick look with ideas you can try on your own.', 'A short video you can watch in a moment.'];
-var PTAG = { yt: ['#Shorts', '#YouTubeShorts'], ig: ['#Reels', '#InstagramReels'], tt: ['#TikTok', '#ShortVideo'], fb: ['#FacebookReels', '#Reels'] };
+function hpool(st, k) { var s = HK[st]; return k === 'q' ? s.q : s.u.concat(k === 'h' ? s.h : s.n); }
+
+// ---- Titles: each approach is a different angle, not a rewording. t = tones it suits (c b f i y).
+var TC = { curious: 'c', bold: 'b', friendly: 'f', informative: 'i', funny: 'y' };
+var TF = [
+  { l: "Beginner guide", t: "fi", n: ["A beginner’s guide to {t}", "{T} explained simply", "{T}, step by step"], h: ["How to {a}: a simple guide", "How to {a}, step by step", "A beginner’s guide: how to {a}"] },
+  { l: "Question", t: "c", n: ["What is the easiest way to start with {t}?", "Where should you start with {t}?", "What should you know before trying {t}?"], h: ["Can you really {a}? Here is how", "What is the easiest way to {a}?", "Where do you start if you want to {a}?"] },
+  { l: "Mistakes", t: "b", n: ["Mistakes to avoid with {t}", "Common {t} mistakes and how to fix them", "What to stop doing with {t}"], h: ["Mistakes to avoid when you {a}", "Stop doing this when you {a}", "Common mistakes when trying to {a}"] },
+  { l: "Quick list", t: "ib", n: ["3 things to know about {t}", "3 quick tips for {t}", "{T}: 3 points worth remembering"], h: ["3 ways to {a}", "3 quick tips to {a}", "3 things to know before you {a}"], m: "Change the number to match your video." },
+  { l: "Common assumptions", t: "bc", n: ["What people often get wrong about {t}", "{T}: myth or fact?", "Rethinking {t}"], h: ["What people often get wrong when they {a}", "Rethinking how you {a}", "A different way to {a}"], m: "Use this angle only if your video really covers it." },
+  { l: "For your audience", t: "f", n: ["{T} for {who}", "{T}: a quick guide for {who}", "Starting with {t}? A note for {who}"], h: ["How {who} can {a}", "A quick guide for {who}: how to {a}", "Here is how {who} can {a}"] },
+  { l: "Problem and fix", t: "bf", n: ["Struggling with {t}? Try this", "{T} not clicking? Start here", "A simpler way into {t}"], h: ["Struggling to {a}? Try this", "Can’t {a}? Start here", "A simpler way to {a}"] },
+  { l: "Quick version", t: "ib", n: ["{T} in under a minute", "{T}: the quick version", "{T} in 60 seconds"], h: ["How to {a} in under a minute", "How to {a}: the quick version", "{a} in 60 seconds"], m: "Use this only if your video really is that short." },
+  { l: "Personal angle", t: "fy", n: ["I tried {t} so you don’t have to", "My honest take on {t}", "What I wish I knew about {t}"], h: ["What I wish I knew before I tried to {a}", "My honest take on how to {a}", "I tried to {a}. Here is what I learned"], m: "Use a personal angle only if it matches your real experience." },
+  { l: "Curiosity", t: "c", n: ["The part of {t} that gets skipped", "One detail about {t} that is easy to miss", "Why a closer look at {t} is worth it"], h: ["The part of learning to {a} that gets skipped", "One detail that makes it easier to {a}", "Why it is worth learning to {a}"] },
+  { l: "Playful", t: "y", n: ["Me vs. {t}", "POV: you are finally learning {t}", "{T}, but make it fun"], h: ["POV: you finally try to {a}", "Me trying to {a}", "Learning to {a}, but make it fun"] }
+];
+var TQ = [["Direct question", "{Q}?"], ["Short answer", "{Q}? The short answer"], ["Explained simply", "{Q}? Explained simply"], ["Quick answer", "The answer to “{q}?” in under a minute", "Use this only if your video really is that short."], ["How to think about it", "{Q}? Here is how to think about it"], ["Clear answer", "A clear answer to this: {q}?"], ["What to know first", "{Q}? What to know first"], ["Quick explainer", "Quick explainer: {q}?"]];
+function tmeta(s, m) { var r = s.length + ' characters'; if (s.length > 100) r += ' (over YouTube’s 100-character title limit)'; return m ? r + '. ' + m : r; }
+
+// ---- Scripts: beats per duration, [type, seconds, number of points].
+var BEATS = {
+  10: [['hook', 2], ['pt', 5, 1], ['cta', 3]],
+  15: [['hook', 3], ['pt', 8, 2], ['cta', 4]],
+  30: [['hook', 3], ['set', 5], ['pt', 14, 2], ['wrap', 4], ['cta', 4]],
+  60: [['hook', 4], ['set', 10], ['pt', 26, 3], ['ex', 10], ['wrap', 5], ['cta', 5]]
+};
+var TL = { hook: 'Hook', set: 'The problem', pt: 'Main points', ex: 'Example', wrap: 'Payoff', cta: 'Call to action' };
+var SC = {
+  en: {
+    hook: { friendly: ["Hey {who}! Let’s talk about {t}.", "Hi {who}, quick one on {t}."], energetic: ["Stop scrolling: {t} in a few seconds!", "Ready? Here’s {t} in one short video!"], serious: ["Here’s what {who} should know about {t}.", "A clear look at {t}, in one short video."], funny: ["Me trying to explain {t} in one short video:", "A quick tour of {t}, minus the boring parts."] },
+    hq: "Quick question: {q}?",
+    set: ["If you are new to {t}, it can feel like a lot.", "Here is the usual trouble with {t}: [name the problem {who} face, in one sentence]."],
+    key: "Key point", ord: ["First", "Next", "Finally"],
+    pt: ["{o}: [{tip} for {t}].", "{o}: [a next step that builds on the first].", "{o}: [a last tip, or one mistake to avoid]."],
+    ex: "Example: [a real example of {t} from your own experience, in one or two sentences].",
+    wrap: ["So the main idea is simple: [one-sentence takeaway about {t}].", "To sum up: [what {who} should remember about {t}]."],
+    cta: ["Save this so you can come back to it later.", "Tell me in the comments what you would like covered next.", "Share this with a friend who could use it.", "Follow if you want more short videos on this."],
+    lead: ["If this was useful: ", "One last thing: ", "Before you go: "]
+  },
+  hi: {
+    hook: { friendly: ["नमस्ते {who}! {t} के बारे में एक छोटी बात।", "{who}, आज {t} के बारे में आसान भाषा में बात करते हैं।"], energetic: ["रुकिए! {t} कुछ ही सेकंड में!", "तैयार हैं? एक छोटे वीडियो में {t}!"], serious: ["{t} के बारे में {who} को यह ज़रूर जानना चाहिए।", "{t} पर एक साफ़ और सीधी बात।"], funny: ["मैं, एक छोटे वीडियो में {t} समझाने की कोशिश करते हुए:", "{t} की बात करें तो, बोरिंग हिस्से छोड़कर।"] },
+    hq: "एक सवाल: {q}?",
+    set: ["अगर {t} आपके लिए नया है, तो यह शुरू में थोड़ा भारी लग सकता है।", "{t} में अक्सर यह दिक्कत आती है: [एक वाक्य में दिक्कत बताइए]।"],
+    key: "मुख्य बात", ord: ["पहला", "दूसरा", "तीसरा"],
+    pt: ["{o}: [{t} के लिए एक आसान स्टेप या पॉइंट]।", "{o}: [अगला स्टेप, जो पहले वाले पर बने]।", "{o}: [आख़िरी टिप, या एक गलती जिससे बचना है]।"],
+    ex: "उदाहरण: [{t} का आपके अपने अनुभव से एक असली उदाहरण, एक-दो वाक्यों में]।",
+    wrap: ["तो मुख्य बात यह है: [{t} के बारे में एक वाक्य में निचोड़]।", "संक्षेप में: [{t} के बारे में {who} को क्या याद रखना चाहिए]।"],
+    cta: ["इसे सेव कर लीजिए, बाद में काम आएगा।", "कमेंट में बताइए, अगला वीडियो किस बारे में चाहिए।", "इसे उस दोस्त को भेजिए जिसे इसकी ज़रूरत है।", "ऐसे और छोटे वीडियो के लिए फ़ॉलो करें।"],
+    lead: ["अगर यह काम का लगा: ", "जाने से पहले: "]
+  },
+  hn: {
+    hook: { friendly: ["Hey {who}! {t} ke baare mein ek chhoti si baat.", "{who}, aaj {t} ke baare mein aasaan bhasha mein baat karte hain."], energetic: ["Ruko! {t} bas kuch seconds mein!", "Ready? Ek chhote video mein {t}!"], serious: ["{t} ke baare mein {who} ko yeh zaroor jaanna chahiye.", "{t} par ek seedhi aur saaf baat."], funny: ["Main, ek short video mein {t} samjhane ki koshish karte hue:", "{t} ki baat karein, boring hisse chhodkar."] },
+    hq: "Ek sawaal: {q}?",
+    set: ["Agar {t} aapke liye naya hai, to shuru mein thoda bhaari lag sakta hai.", "{t} mein aksar yeh dikkat aati hai: [ek sentence mein dikkat batao]."],
+    key: "Mukhya baat", ord: ["Pehla", "Doosra", "Teesra"],
+    pt: ["{o}: [{t} ke liye ek aasaan step ya point].", "{o}: [agla step, jo pehle wale par bane].", "{o}: [aakhri tip, ya ek galti jisse bachna hai]."],
+    ex: "Example: [{t} ka aapke apne experience se ek asli example, ek-do sentences mein].",
+    wrap: ["To main baat yeh hai: [{t} ke baare mein ek sentence mein nichod].", "Short mein: [{t} ke baare mein {who} ko kya yaad rakhna chahiye]."],
+    cta: ["Isse save kar lo, baad mein kaam aayega.", "Comment mein batao, agla video kis baare mein chahiye.", "Isse us dost ko bhejo jise iski zaroorat hai.", "Aise aur short videos ke liye follow karo."],
+    lead: ["Agar kaam ka laga: ", "Jaane se pehle: "]
+  }
+};
+
+// ---- Descriptions
+var OPEN = {
+  friendly: ["A quick, friendly look at {t} for {who}.", "Let’s talk about {t}, one short step at a time."],
+  professional: ["A clear, practical overview of {t} for {who}.", "This short video covers {t} in plain language."],
+  energetic: ["Quick and to the point: {t} for {who}!", "Let’s get into {t}, fast!"],
+  casual: ["Just a quick one about {t}.", "Here’s a short take on {t} for {who}."]
+};
+var CTAD = {
+  yt: ["Subscribe if you want more videos like this.", "Tell me in the comments what you would like covered next.", "Save this for later if it helped."],
+  ig: ["Save this for later and send it to someone who might find it useful.", "Follow for more short videos on this topic.", "Tell me your questions in the comments."],
+  tt: ["Follow for more quick videos like this.", "Share it with a friend who needs it.", "Tell me in the comments what you would like to see next."],
+  fb: ["Share it with a friend who might like it.", "Follow the page for more short videos.", "Let us know what you think in the comments."]
+};
+var PLM = { yt: 'YouTube may show only the first lines before “Show more”, so keep the key point up front.', ig: 'Instagram may cut captions off after the first lines, so lead with the main point.', tt: 'Short captions are easier to read on TikTok.', fb: 'Keep the main point in the first lines.' };
+var PT = { yt: ['#Shorts'], ig: ['#Reels'], tt: [], fb: ['#Reels'] };
 var STOP = ['the', 'and', 'for', 'with', 'how', 'what', 'why', 'your', 'you', 'from', 'that', 'this', 'are', 'into', 'about', 'can', 'tips'];
 
-function tags(topic) {
-  var w = topic.toLowerCase().replace(/[^\p{L}\p{M}\p{N}\s]/gu, ' ').split(/\s+/).filter(function (x) { return x.length > 2 && STOP.indexOf(x) < 0; });
-  w = uniq(w);
-  var out = [];
-  if (w.length > 1) { var j = w.slice(0, 3).join(''); if (j.length <= 30) out.push('#' + j); }
-  w.slice(0, 3).forEach(function (x) { out.push('#' + x); });
-  return out;
+function tags(topic, niche, pl) {
+  var w = uniq(topic.toLowerCase().replace(/[^\p{L}\p{M}\p{N}\s]/gu, ' ').split(/\s+/).filter(function (x) { return x.length > 2 && x.length <= 20 && STOP.indexOf(x) < 0 && !/^\d+$/.test(x); }));
+  var out = [], seen = {};
+  if (w.length > 1) { var j = w.slice(0, 3).join(''); if (j.length <= 24) out.push('#' + j); }
+  w.slice(0, 2).forEach(function (x) { out.push('#' + x); });
+  if (NI[niche].tag) out.push(NI[niche].tag);
+  PT[pl].forEach(function (x) { out.push(x); });
+  return out.filter(function (x) { var k = x.toLowerCase(); if (seen[k]) return false; seen[k] = 1; return true; }).slice(0, 6);
 }
 
 var BUILD = {
-  hooks: function (t, f) {
-    var tone = f.tone.value, n = f.niche.value === 'general' ? 'this' : f.niche.selectedOptions[0].text.toLowerCase();
-    var v = { t: t, T: cap(t), who: WHO[f.niche.value], n: n };
-    return rot(HOOKS[tone], hash(t.toLowerCase() + f.niche.value + tone), 6).map(function (s) { return { text: cap(fill(s, v)) }; });
+  hooks: function (raw, f) {
+    var E = f.elements, niche = E.niche.value, tone = E.tone.value, sty = E.hstyle.value, P = parse(raw, niche);
+    var seed = raw.toLowerCase() + '|' + niche + '|' + tone + '|' + sty, h = hash(seed), order = rot(HST, h, 5), list = [], seen = {}, out = [], i, j, p;
+    if (sty === 'mix') {
+      for (i = 0; i < 6; i++) { var st = order[i % 5]; p = hpool(st, P.k); list.push({ st: st, tp: p[(hash(seed + st) + (i > 4 ? 1 : 0)) % p.length] }); }
+    } else {
+      rot(hpool(sty, P.k), h, 6).forEach(function (tp) { list.push({ st: sty, tp: tp }); });
+      for (j = 0; list.length < 6 && j < 20; j++) { var s2 = order[j % 5]; if (s2 === sty) continue; p = hpool(s2, P.k); list.push({ st: s2, tp: p[(h + j) % p.length] }); }
+    }
+    list.forEach(function (it, n) {
+      var txt = fill(it.tp, P);
+      if (/^[A-Z][a-z]/.test(it.tp) && !/^[^:]{0,45}:/.test(it.tp) && hash(seed + 'p' + n) % 3 === 0) txt = fill(sel(TP[tone], seed, n), P) + lo(txt);
+      txt = cap(txt);
+      if (seen[txt]) return;
+      seen[txt] = 1; out.push({ label: HNAME[it.st], text: txt, meta: HMETA[it.st] });
+    });
+    return out;
   },
-  script: function (t, f) {
-    var d = +f.dur.value, L = SH[f.lang.value], tone = f.tone.value, v = { t: t };
-    var he = d <= 15 ? 2 : 3, cs = d - (d >= 30 ? 5 : 3), np = PTS[d], lines = [];
-    for (var i = 0; i < np; i++) lines.push(fill(L.pt, { o: L.ord[i === np - 1 && np > 1 ? 4 : i], t: t }));
-    var cta = clean(f.cta.value) || L.cta;
-    return [
-      { label: 'Hook (0–' + he + 's)', text: fill(L.hook[tone], v), meta: 'Aim for about ' + Math.round(d * 2.5) + ' spoken words overall.' },
-      { label: 'Main content (' + he + '–' + cs + 's)', text: lines.join('\n') },
-      { label: 'Call to action (' + cs + '–' + d + 's)', text: cta }
-    ];
+  script: function (raw, f) {
+    var E = f.elements, d = +E.dur.value, lg = E.lang.value, tone = E.tone.value, niche = E.niche.value, L = SC[lg], P = parse(raw, niche);
+    var seed = raw.toLowerCase() + '|' + niche + '|' + tone + '|' + lg + '|' + d, at = 0, out = [], cta = clean(E.cta.value);
+    var V = { t: P.t, q: P.q, Q: P.Q, tip: P.tip, who: lg === 'en' ? P.who : (HW[lg][niche] || HW[lg].def) };
+    BEATS[d].forEach(function (b) {
+      var ty = b[0], s = b[1], st = at, lines = [], i, lab = TL[ty];
+      at += s;
+      if (ty === 'hook') lines.push(fill(P.k === 'q' ? L.hq : sel(L.hook[tone], seed, 1), V));
+      else if (ty === 'set') lines.push(fill(sel(L.set, seed, 2), V));
+      else if (ty === 'pt') { if (b[2] === 1) lab = 'Key point'; for (i = 0; i < b[2]; i++) { V.o = b[2] === 1 ? L.key : L.ord[i]; lines.push(fill(L.pt[i], V)); } }
+      else if (ty === 'ex') lines.push(fill(L.ex, V));
+      else if (ty === 'wrap') lines.push(fill(sel(L.wrap, seed, 3), V));
+      else lines.push(cta ? sel(L.lead, seed, 4) + (/[.!?।…]$/.test(cta) ? cta : cta + '.') : sel(L.cta, seed, 5));
+      out.push({ label: lab + ' (' + st + '–' + at + 's)', text: lines.join('\n'), meta: 'About ' + Math.round(s * 2.5) + ' spoken words' + (ty === 'pt' ? ', so keep each point to one sentence.' : '.') });
+    });
+    return out;
   },
-  titles: function (t, f) {
-    var tone = f.tone.value, v = { t: t, T: cap(t) };
-    return rot(TITLES[tone], hash(t.toLowerCase() + tone), 8).map(function (s) {
-      var x = cap(fill(s, v)), m = x.length + ' characters';
-      if (x.length > 100) m += ' (over YouTube\'s 100-character title limit)';
-      return { text: x, meta: m };
+  titles: function (raw, f) {
+    var E = f.elements, niche = E.niche.value, tone = E.tone.value, P = parse(raw, niche), seed = raw.toLowerCase() + '|' + niche + '|' + tone;
+    if (P.k === 'q') return TQ.map(function (x) { var s = cap(fill(x[1], P)); return { label: x[0], text: s, meta: tmeta(s, x[2]) }; });
+    var c = TC[tone], pref = [], rest = [];
+    rot(TF, hash(seed), TF.length).forEach(function (x) { (x.t.indexOf(c) > -1 ? pref : rest).push(x); });
+    return pref.concat(rest).slice(0, 8).map(function (x, i) {
+      var s = cap(fill(sel(P.k === 'h' ? x.h : x.n, seed, i), P));
+      return { label: x.l, text: s, meta: tmeta(s, x.m) };
     });
   },
-  desc: function (t, f) {
-    var p = f.plat.value, tone = f.tone.value, seed = hash(t.toLowerCase() + p + tone);
-    var cta = clean(f.cta.value) || 'Follow for more short videos.';
-    var body = [fill(OPEN[tone], { t: t }), rot(LINE, seed, 1)[0], MID[p], cta].join('\n');
-    var out = [{ label: 'Description', text: body }];
-    if (f.tags.checked) out.push({ label: 'Hashtag suggestions', text: uniq(tags(t).concat(PTAG[p])).slice(0, 8).join(' '), meta: 'Review and keep only the tags that fit your video.' });
+  desc: function (raw, f) {
+    var E = f.elements, niche = E.niche.value, pl = E.plat.value, tone = E.tone.value, P = parse(raw, niche), N = NI[niche];
+    var seed = raw.toLowerCase() + '|' + niche + '|' + pl + '|' + tone, c = clean(E.cta.value);
+    var op = P.k === 'q' ? fill('A short answer to a common question: {Q}?', P) : fill(sel(OPEN[tone], seed, 1), P);
+    var cta = c ? (/[.!?।…]$/.test(c) ? c : c + '.') : sel(CTAD[pl], seed, 3);
+    var out = [
+      { label: 'Description', text: [op + ' ' + N.gist, cta, N.note].filter(Boolean).join('\n\n'), meta: PLM[pl] },
+      { label: 'Short version', text: op + ' ' + cta, meta: 'A one or two line caption you can use instead.' }
+    ];
+    if (E.tags.checked) out.push({ label: 'Hashtag suggestions', text: tags(P.t, niche, pl).join(' '), meta: 'Keep only the tags that fit your video. A few focused tags are enough.' });
     return out;
   }
 };
@@ -404,7 +559,7 @@ function render(name, items) {
   o.appendChild(ul); store[name] = items; $('ca-' + name).hidden = false;
 }
 function allText(name) {
-  return (store[name] || []).map(function (i) { return (i.label ? i.label + '\n' : '') + i.text; }).join(name === 'script' || name === 'desc' ? '\n\n' : '\n');
+  return (store[name] || []).map(function (i) { return (i.label ? i.label + '\n' : '') + i.text; }).join('\n\n');
 }
 function clearOut(name, msg) {
   var o = $('o-' + name); o.textContent = '';
@@ -461,10 +616,10 @@ Array.prototype.forEach.call(document.querySelectorAll('[data-open]'), function 
 });
 
 var EX = [
-  { tool: 'hooks', topic: 'exam week study habits', set: { niche: 'education', tone: 'curious' } },
-  { tool: 'script', topic: 'saving money on a student budget', set: { dur: '30', lang: 'hn', tone: 'friendly' } },
-  { tool: 'titles', topic: 'beginner home workout', set: { tone: 'friendly' } },
-  { tool: 'desc', topic: 'quick street-food recipe', set: { plat: 'yt', tone: 'friendly' } }
+  { tool: 'hooks', topic: 'exam week study habits', set: { niche: 'education', tone: 'curious', hstyle: 'mix' } },
+  { tool: 'script', topic: 'saving money on a student budget', set: { dur: '30', lang: 'hn', tone: 'friendly', niche: 'finance' } },
+  { tool: 'titles', topic: 'beginner home workout', set: { tone: 'friendly', niche: 'fitness' } },
+  { tool: 'desc', topic: 'quick street-food recipe', set: { plat: 'yt', tone: 'friendly', niche: 'food' } }
 ];
 Array.prototype.forEach.call(document.querySelectorAll('[data-ex]'), function (b) {
   b.addEventListener('click', function () {
